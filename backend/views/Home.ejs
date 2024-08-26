@@ -1,0 +1,62 @@
+<%- include('./commonheader.ejs')  %>
+
+
+<div class="container">
+  <div class="card-container">
+      <% data.forEach((item)=>
+        {%>
+         
+            <div class="card">
+          <div class="card-image">
+    
+          </div>
+          <div class="content">
+          <h3><%=item.item_name%></h3>
+          <h5 class="">Start Time: <%=item.start_time%></h5>
+          <h5 class="">End Time: <%=item.end_time%></h5>
+          <h5 class="">Start Price: <%=item.start_price%></h5>
+          <%if(item.winner!="Not annouces")
+          {%>
+            <h5 class="">Winner:<%=item.winner%></h5>
+          <%}%>
+          
+          <%if(item.status!="pending")
+          {%>
+            <a href="" class="btn btn-success text-white"><%=item.status%></a>
+          <%}
+          else
+          {
+         
+          let d = new Date(item.end_time).getDate()-new Date().getDate();
+          let m = new Date(item.end_time).getMonth()- new Date().getMonth();
+          let y = new Date(item.end_time).getYear()-new Date().getYear();
+          let h = new Date(item.end_time).getHours()-new Date().getHours();
+          let min = new Date(item.end_time).getMinutes()-new Date().getMinutes();
+          let s = new Date(item.end_time).getSeconds()-new Date().getSeconds();
+             if(d<0)
+               { %>
+                 
+                   <a href="" class="btn btn-success text-white">close</a>
+              <%}
+               if(m<=0 && y<=0 && h<=0 && min<=0 && s<=0)
+              {%>
+                 
+                  <a href="" class="btn btn-success text-white">close</a>
+              <%}
+              else
+              {%>
+                  <a href="/price/<%=item.id%>" class="btn btn-success text-white">Bidding</a>
+              <%}}%>
+          
+          </div>
+        </div>
+      
+      <%})%>
+    </div>
+</div>   
+
+<%- include('./footer.ejs')  %>
+
+
+
+

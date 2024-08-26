@@ -1,0 +1,257 @@
+
+* {
+    box-sizing: border-box;
+    margin:0px;
+    padding:0px;
+    list-style: none;
+    text-decoration: none;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Nunito, sans-serif;
+    background-color: beige;
+  }
+  nav
+  {
+     width:100%;
+     height:80px;  
+     background-color: black;
+     padding-inline: 100px;
+  } 
+  label.logo
+  {
+    color: white;
+    font-size: 35px;
+    margin: 0 100px;
+    line-height: 80px;
+  }
+
+nav ul
+{
+  float: right;
+}
+nav ul li
+{
+  display: inline-block;
+  line-height: 80px;
+}
+nav ul li a 
+{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  text-transform: capitalize;
+  padding: 8px 20px;
+}
+nav ul li a.active,a:hover
+{
+  background-color: white;
+  color:black;
+} 
+#checkbtn
+{
+  float: right;
+  line-height: 80px;
+  margin-right: 10px;
+  font-size: 30px;
+  color: white;
+  display: none;
+}
+#check
+{
+  display: none;
+}
+#check:checked ~ ul
+{
+  left:0;
+}
+@media (max-width:895px) 
+{
+ #checkbtn
+  {
+    display:block;
+  }  
+  nav ul
+  {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    position: fixed;
+    top:80px;
+    left:-100%;
+    transition: .5s;
+    z-index: 1;
+  }
+  nav ul li
+  {
+    display: block;
+    text-align: center;
+    line-height: 35px;
+    margin: 10px;
+  }
+  nav
+  {
+  padding-inline: 0px;
+  }
+}
+
+.card-container{
+  display: flex;
+  
+ 
+  flex-wrap: wrap;
+ 
+}
+.card
+{
+  
+  width: 375px;
+  margin:20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+.card-image img{
+  width: 100%;
+  height: auto;
+}
+  .content
+  {
+    padding: 20px;
+  }
+  .content h3{
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  .content p{
+    font-size: 16px;
+    margin-bottom: 20px;
+    color:#666;
+  }
+  .content .button
+  {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007bff;
+    color:#fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: 0.3s ease;
+  }
+.card:hover{
+  transform: scale(1.05);
+}
+  .content .button:hover{
+    background-color: #0056b3;
+  }
+   .display 
+  {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    flex-direction: column;
+  } 
+  
+  .bidcard
+  {
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-inline: auto;
+  }
+  
+  .rightside
+  {
+    display: flex;
+    gap:50px;
+  }
+  
+  .title {
+    font-weight: 800;
+  }
+  
+  .tender-container {
+      
+      margin-top: 16px;
+      display: flex;
+      gap: 64px;
+      flex-wrap: wrap;
+      margin-inline: auto;
+      align-items: center;
+      
+     width:80%;
+    
+  }
+  .con 
+  {
+    
+    width:100%;
+  }
+  
+  .tender-card {
+      display: inline-block;
+      max-width: 550px;
+      border-radius: 8px;
+      overflow: hidden;
+      padding-bottom: 24px;
+      box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease-in-out;
+      
+      background-color: white;
+  }
+  
+  .tender-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 16px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-title {
+     text-align: center;
+     margin:10px;
+     
+  }
+  
+  .card-text {
+      padding-inline: 16px;
+    
+  }
+  
+  .card-text p {
+      margin-block: 8px;
+  }
+  .header-container .link
+  {
+  color: white;
+  }
+  .link
+  {
+    text-decoration: none;
+    
+  }
+  .formContainer
+  {
+    width:50%;
+    position: absolute;
+    top:25%;
+    left:25%;
+    transition: (-25%,-25%);
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.1);
+    padding: 80px;
+    background-color: white;
+  }
+  .formbtn
+  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  
+
+ 

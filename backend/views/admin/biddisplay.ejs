@@ -1,0 +1,106 @@
+<%- include('./header.ejs') %>
+<% if(message.length > 0){ %>
+    <div class="alert alert-success">
+    <%= message %>
+    </div>
+    <% } %>
+<div class="container">
+    <table class="table text-center  mt-5" style="border:1px solid">
+        <tr style="background-color: grey; color:white">
+            
+            <th>item_name</th>
+            <th>Start_time</th>
+            <th>End_time</th>
+            <th>Start_price</th>
+            <th>Status</th>
+            
+            <th>Winner</th>
+            <th>Action</th>
+        </tr>
+      
+        <% data.forEach((item)=>{%>
+        <tr class="bg-grey">
+           
+            <td><%=item.item_name%></td>
+            <td><%=item.start_time%></td>
+            <td><%=item.end_time%></td>
+            <td><%=item.start_price%></td>
+            <%if(item.status!=="pending")
+            {%>
+                <td><%=item.status%></td>
+                
+           <%}else
+           {%>
+        
+        <%
+            let d = new Date(item.end_time).getDate()-new Date().getDate();
+            let m = new Date(item.end_time).getMonth()- new Date().getMonth();
+            let y = new Date(item.end_time).getYear()-new Date().getYear();
+            let h = new Date(item.end_time).getHours()-new Date().getHours();
+            let min = new Date(item.end_time).getMinutes()-new Date().getMinutes();
+            let s = new Date(item.end_time).getSeconds()-new Date().getSeconds();
+            
+            if(d<0)
+            { %>
+                
+              <td>Close</td>
+                
+            <%}
+            else if(m<=0 && y<=0 && h<=0 && min<=0 && s<=0)
+            {%>
+                
+            <td>Close</td>
+                   
+                <%}
+                else
+                { %>
+                    
+                <td>Pending</td>
+                
+            <%}%>
+        <%}%>
+        
+            <%if(item.winner!="Not announce")
+                {%>
+                    <td><%=item.winner%></td>
+               <%}
+               else
+               {
+                
+                    let d = new Date(item.end_time).getDate()-new Date().getDate()
+                    let m = new Date(item.end_time).getMonth()- new Date().getMonth()
+                    let y = new Date(item.end_time).getYear()-new Date().getYear()
+                    let h = new Date(item.end_time).getHours()-new Date().getHours()
+                    let min = new Date(item.end_time).getMinutes()-new Date().getMinutes()
+                    let s = new Date(item.end_time).getSeconds()-new Date().getSeconds()
+                        if(d<0)
+                       {%>
+                           <%if(item.item_name==lastValue.name){%>
+                              <td><%=winner.name%></td>
+                           <%}%>
+                      <%}
+                      else if(m<=0 && y<=0 && h<=0 && min<=0 && s<=0)
+                      {%>
+                           <%if(item.item_name==lastValue.name){%>
+                               <td><%=winner.name%></td>
+                           <%}%>
+                     <%}
+                     else{%>
+                           <td>Processing</td>
+                         <%}%>
+            <%}%>
+            <td>
+                
+                
+                <form action="/close/<%=item._id%>" method="post" style="display:inline-block">
+                    <input type="text" name="status" value="close" hidden>
+                    <input type="text" name="winner" value="<%=winner.name%>" hidden>
+                    <button type="submit" class="btn btn-warning">Update Status</button>
+                </form>
+                <a href="/edit/<%=item._id%>" class="btn btn-success">Edit</a>
+                <a href="/delete/<%=item._id%>" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        <%})%>
+    </table>
+</div>
